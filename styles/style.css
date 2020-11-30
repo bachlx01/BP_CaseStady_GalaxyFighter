@@ -1,0 +1,27 @@
+
+.game-frame {
+    text-align: center;
+}
+#myCanvas{
+    position: absolute;
+    top: 10px;
+    left: 20%;
+    background-image: url("../images/background6.jpg");
+    background-size: cover;
+}
+#myCanvas2{
+    position: absolute;
+    top: 10px;
+    left: 20%;
+    color: aqua;
+}
+#myCanvas3{
+    position: absolute;
+    top: 10px;
+    left: 20%;
+}
+#myCanvas4{
+    position: absolute;
+    top: 10px;
+    left: 20%;
+}
