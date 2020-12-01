@@ -1,13 +1,13 @@
 const NUMBERS_UFO_IMAGES = 10;
 
-//khai báo lớp Game
+//Initialize class Game
 let Game = function () {
     let self = this;
     this.over = false;
     this.ready;
     this.player = new Player();
     this.bullet = new Bullet();
-    //khởi tạo nhiều chướng ngại vật và lưu vào mảng đc khai báo Global
+    // Creat multiple Obstacles when begin. then each of obstacle is deleted, creat more one to replace
     this.createMultipleObstacles = function () {
         for (let i = 0; i < NUMBERS_OBSTACLES; i++) {
             this.obstacle = new Obstacles();
@@ -18,12 +18,13 @@ let Game = function () {
 
         this.obstacles = obstacles;
     };
+    // Draw created obstacles
     this.drawMultipleObstacles = function () {
         for (let i = 0; i < self.obstacles.length; i++) {
             self.obstacles[i].draw();
         }
     }
-    //phương thức sẽ được gọi liên tục cho đến khi game over
+    //Call method continuously until game over
     this.start = function () {
         if (self.over) {
             soundPlayerExplosive.play();
@@ -42,14 +43,14 @@ let Game = function () {
             outroGame();
             self.ready = false;
             // highScore = checkCookie();
-            return; //nếu game over thì thoát
+            return; // If game over then out game
         }
-        callBackGameStart = requestAnimationFrame(self.start);
+        requestAnimationFrame(self.start);
         ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
         ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
         self.player.move();
         self.player.show();
-        //vẽ và move các obstacle
+        //draw and move obstacles
         for (let i = 0; i < self.obstacles.length; i++) {
             self.obstacles[i].move();
             if (self.obstacles[i].y >= CV_HEIGHT) {
@@ -58,9 +59,9 @@ let Game = function () {
             }
             self.obstacles[i].draw();
         }
-        //ghi lại trạng thái máu và điểm số
+        //record status and score
         self.record()
-        //kiểm tra game đã over chưa
+        //check status game
         self.end();
     };
     this.end = function () {
@@ -74,6 +75,7 @@ let Game = function () {
             }
         }
     }
+    //
     this.record = function () {
         ctxGame.textAlign = "center";
         ctxGame.font = "30px Impact";
@@ -85,7 +87,7 @@ let Game = function () {
     }
 };
 
-//khai báo lớp Audio
+// Creat a element audio.
 let Sound = function (src) {
     let self = this;
     this.sound = document.createElement("audio");
@@ -99,42 +101,5 @@ let Sound = function (src) {
     }
     this.stop = function () {
         self.sound.pause();
-    }
-}
-
-function setCookie(cname, cvalue, exdays) {
-    let d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=./images";
-}
-
-function getCookie(cname) {
-    let name = cname + "=";
-    let ca = document.cookie.split(' ');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function checkCookie() {
-    let value = getCookie("scores");
-    if (value != "") {
-        // alert("Welcome again " + user);
-        if (value > scores) return value;
-        else return -1;
-    } else {
-        // value = prompt("Please enter your name:", "");
-        value = scores;
-        // if (value != "" && value != null) {
-        setCookie("scores", value, 365);
-        // }
     }
 }

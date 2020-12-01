@@ -8,21 +8,20 @@ let ctxIntro = cvIntro.getContext('2d');
 let cvExplosive = document.getElementById('myCanvas4');
 let ctxExplosive = cvExplosive.getContext('2d');
 
-//khởi tạo các giá trị ban đầu
+// Create Initial value;
 let game = new Game();
 let musicBackground;
 let soundGameOver = new Sound('./sounds/gameOver3.mp3');
 let soundShoot = new Sound('./sounds/chiu.mp3');
 let soundExplosive = new Sound('./sounds/Explosion+1.mp3');
-let soundPlayerExplosive= new Sound('./sounds/Explosion+3.mp3');
+let soundPlayerExplosive = new Sound('./sounds/Explosion+3.mp3');
 let obstacles = [];
 let scores = 0;
 let highScore;
 let callBackBulletMove;
-let callBackGameStart;
 let callBackMusicBackground;
-window.addEventListener('keydown',function (event) {
-    if (!game.ready){
+window.addEventListener('keydown', function (event) {
+    if (!game.ready) {
         if (event.keyCode == ENTER_KEY) {
             playReset();
             playReady();
@@ -59,23 +58,28 @@ function getRandomColor() {
 }
 
 function playReady() {
-    countDown(1);
+    cvGame.style.webkitFilter = "blur(0px)";
+    ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
+    ctxIntro.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
+    ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
+    newGame()
+    // countDown(1);
 }
 
-function countDown(time) {
-    if (time > 0) {
-        introGame(time);
-        setTimeout(function () {
-            countDown(time - 1)
-        }, 1000);
-    } else {
-        cvGame.style.webkitFilter = "blur(0px)";
-        ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
-        ctxIntro.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
-        ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
-        newGame()
-    }
-}
+// function countDown(time) {
+//     if (time > 0) {
+//         introGame(time);
+//         setTimeout(function () {
+//             countDown(time - 1)
+//         }, 1000);
+//     } else {
+//         cvGame.style.webkitFilter = "blur(0px)";
+//         ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
+//         ctxIntro.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
+//         ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
+//         newGame()
+//     }
+// }
 
 function playReset() {
     cvGame.style.webkitFilter = "blur(0px)";
@@ -90,36 +94,29 @@ function playReset() {
 function newGame() {
     //new Game
     game = new Game();
-    game.ready=true;
-    //khởi tạo mảng chướng ngại vật
-    //hiện thị player
+    game.ready = true;
+    //Display player
     game.player.show();
+    // Initialize array obstacles
     obstacles = [];
-    //reset điểm
+    // Creat multiple obstacles
     game.createMultipleObstacles();
-    //hiển thị chướng ngại vật
+    // draw obstacles
     game.drawMultipleObstacles();
+    // reset score
     scores = 0;
     musicBackground = new Sound('./sounds/background4.m4a');
     musicBackground.play();
-    //do độ dài của nhạc chỉ là 2p12s nên cần tạo mới sau khoảng time 2p12s
-    callBackMusicBackground = setInterval(function () {
-        //phải dừng trước mới tạo mới
+    // replay sound
+    setInterval(function () {
+        // stop before replay
         musicBackground.stop();
         musicBackground = new Sound('./sounds/background4.m4a');
         musicBackground.play();
-    }, 132000);
+    }, 132000); // this is the play time of sound
     game.start();
 }
 
-function introGame(time) {
-    cvGame.style.webkitFilter = "blur(0px)";
-    ctxIntro.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
-    ctxIntro.textAlign = "center";
-    ctxIntro.font = "bold 140px Impact ";
-    ctxIntro.fillStyle = 'yellow';
-    ctxIntro.fillText(time, CV_WIDTH / 2, CV_HEIGHT / 2);
-}
 
 function outroGame() {
     cvGame.style.webkitFilter = "blur(2px)";
@@ -128,14 +125,14 @@ function outroGame() {
     ctxIntro.fillStyle = 'yellow';
     ctxIntro.fillText("Game Over", CV_WIDTH / 2, CV_HEIGHT / 2);
     //ghi lại điểm số
-    if (highScore>scores){
+    if (highScore > scores) {
         ctxIntro.font = "bold 25px Impact ";
         ctxIntro.fillStyle = 'yellow';
-        ctxIntro.fillText("New high score: "+highScore, CV_WIDTH / 2, CV_HEIGHT / 1.7);
+        ctxIntro.fillText("New high score: " + highScore, CV_WIDTH / 2, CV_HEIGHT / 1.7);
     } else {
         ctxIntro.font = "bold 25px Impact ";
         ctxIntro.fillStyle = 'yellow';
-        ctxIntro.fillText("High score: "+scores, CV_WIDTH / 2, CV_HEIGHT / 1.7);
+        ctxIntro.fillText("High score: " + scores, CV_WIDTH / 2, CV_HEIGHT / 1.7);
     }
 
     ctxIntro.font = "20px Impact";
