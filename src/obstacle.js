@@ -1,12 +1,8 @@
 const EASY_SPEED = 0.45;
-const MEDIUM_SPEED = 0.6;
-const HARD_SPEED = 1;
-const INCREASE_SPEED = 2;
 const NUMBERS_OBSTACLES = 10;
 const OBSTACLES_SIZE = 70;
-const OBSTACLES_RATIO = 0.4;
 const BLUR_LEVEL = 30;
-const BLUR_COLOR = 'aqua';
+const OBS_BULLET_SPEED = BULLET_SPEED*0.6;
 
 // ******** Initialize class obstacles *************
 let Obstacles = function () {
@@ -53,7 +49,7 @@ let Obstacles = function () {
     this.shoot = function () {
         if (this.y + this.height >= 0) { // when the obstacle appear
             let bullet = new Bullet();
-            bullet.setType('bulletOfObstacle', './images/bullet5.png', 30, 4, 1); // name, link, size, speed, dame
+            bullet.setType('bulletOfObstacle', './images/bullet5.png', 30, OBS_BULLET_SPEED, 1); // name, link, size, speed, dame
             this.bullet = bullet;
             this.bullet.x = this.x + this.width / 2 - this.bullet.width / 2; // set appear position of obstacle's bullet same position of obstacle
             this.bullet.y = this.y + this.height - this.bullet.height; // set obstacle's bullet appear from center of obstacle

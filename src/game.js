@@ -32,10 +32,10 @@ let Game = function () {
             let posX = self.player.x + self.player.width / 2 - self.player.explosive.size / 2;
             let posY = self.player.y + self.player.height / 2 - self.player.explosive.size / 2;
             self.player.explosive.setPosition(posX, posY);
-            //xoá Player và vẽ lại các Obstacles
-            ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
-            self.drawMultipleObstacles();
-            self.player.explosive.start();
+            //
+            ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);  // clear screen
+            // self.drawMultipleObstacles();
+            self.player.explosive.start();  // draw the explosion of player
             musicBackground.stop();
             soundGameOver.play();
             window.clearInterval(callBackMusicBackground);
@@ -45,11 +45,11 @@ let Game = function () {
             // highScore = checkCookie();
             return; // If game over then out game
         }
-        requestAnimationFrame(self.start);
-        ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
-        ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
-        self.player.move();
-        self.player.show();
+        requestAnimationFrame(self.start); // this statement executive function 'start' continuously
+        ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT); // clear screen before to add items in new position
+        ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT); // clear bullet
+        self.player.move(); // move player
+        self.player.show();  // show at new position
         //draw and move obstacles
         for (let i = 0; i < self.obstacles.length; i++) {
             self.obstacles[i].move();
@@ -57,14 +57,14 @@ let Game = function () {
                 self.obstacles[i].x = Math.floor(Math.random() * (CV_WIDTH - 150) + 100);
                 self.obstacles[i].y = Math.floor(Math.random() * (-CV_HEIGHT));
             }
-            self.obstacles[i].draw();
+            self.obstacles[i].draw();  // draw at new position
         }
-        //record status and score
+        //record and show status and score at left corner of screen
         self.record()
         //check status game
         self.end();
     };
-    this.end = function () {
+    this.end = function () {  // when any obstacle collide player or bottom edge, this.over = true and end game
         for (let i = 0; i < self.obstacles.length; i++) {
             let playerCollideObstacle = this.player.x + this.player.width / 2 >= this.obstacles[i].x &&
                 this.player.x + this.player.width / 2 <= this.obstacles[i].x + this.obstacles[i].width &&

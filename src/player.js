@@ -9,7 +9,7 @@ const CV_WIDTH = myCanvas.width;
 const CV_HEIGHT = myCanvas.height;
 const DEFAULT_POSISION_Y = CV_HEIGHT - 100;
 const DEFAULT_POSISION_X = CV_WIDTH / 2;
-const DEFAULT_SPEED = 3;
+const DEFAULT_SPEED = 5;
 const PLAYER_HP = 10;
 const CTRL_KEY = 17;
 const SPACE_KEY = 32;
@@ -18,6 +18,7 @@ const UP_ARROW_KEY = 38;
 const RIGHT_ARROW_KEY = 39;
 const DOWN_ARROW_KEY = 40;
 const ENTER_KEY = 13;
+const PLAYER_BULLET_SPEED = -BULLET_SPEED;
 
 //********* Define class Player ***************
 let Player = function () {
@@ -38,13 +39,15 @@ let Player = function () {
         let y = this.y;
         let width = this.width;
         let height = this.height;
+        ctxGame.lineTo(x+15,y+15);
+        ctxGame.lineTo(x-15,y+15);
         ctxGame.drawImage(self.image, x, y, width, height);
     };
 //*********************************************
 
 //************* Event keyboard move left right and ctrl to shoot *****************
     this.changeOrientation = function (event) {
-        //khi game over thì sự kiện bị vô hiệu hóa, ngoại trừ phím Enter để chơi lại Game
+        // when game over disable keyboard unless key enter
         if (game.ready) {
             switch (event.keyCode) {
                 case LEFT_ARROW_KEY:
@@ -65,7 +68,12 @@ let Player = function () {
 //**********************************************
 
 //************ change the property left of fighter to move with one step by speed *****************
+    this.changeOrientationUp = function (e){
+        if (e.keyCode == LEFT_ARROW_KEY) this.orientation = 0;
+        if (e.keyCode == RIGHT_ARROW_KEY) this.orientation = 0;
+    }
     this.move = function () {
+        console.log(this.orientation);
         switch (this.orientation) {
             case ORIENTATION_LEFT:
                 if (this.x <= 0 - this.width/2) { //when my fighter move to left, right edge. keep that position
@@ -88,7 +96,7 @@ let Player = function () {
         let name = 'bulletOfPlayer';
         let link = "./images/rocket2.png";
         let size = 30;
-        let speed = -10; // negative because the bullet move up, so position = top - speed
+        let speed = PLAYER_BULLET_SPEED; // negative because the bullet move up, so position = top - speed
         let damage = 1;
         let bullet = new Bullet();
         bullet.setType(name, link, size, speed, damage);
