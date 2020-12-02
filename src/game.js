@@ -12,7 +12,9 @@ let Game = function () {
         for (let i = 0; i < NUMBERS_OBSTACLES; i++) {
             this.obstacle = new Obstacles();
             let link = './images/ufo' + Math.floor(Math.random() * NUMBERS_UFO_IMAGES) + '.png';
-            this.obstacle.setType(link, OBSTACLES_SIZE, EASY_SPEED)
+            let randomSpeed = (Math.random()*(EASY_SPEED-EASY_SPEED/2)+EASY_SPEED/2);
+            console.log(randomSpeed);
+            this.obstacle.setType(link, OBSTACLES_SIZE, randomSpeed)
             obstacles.push(this.obstacle);
         }
 
