@@ -58,9 +58,9 @@ let Player = function () {
                     break;
                 case CTRL_KEY:
                     this.shoot();
-                    for (let i = 0; i < obstacles.length; i++) {
-                        game.obstacles[i].shoot();
-                    }
+                    // for (let i = 0; i < obstacles.length; i++) {
+                    //     game.obstacles[i].shoot();
+                    // }
                     break;
             }
         }

@@ -62,6 +62,13 @@ function playReady() {
     ctxIntro.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
     ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
     newGame()
+    setInterval(function (){
+
+            for (let i = 0; i < obstacles.length; i++) {
+                game.obstacles[i].shoot();
+            }
+
+    },2000)
     // countDown(1);
 }
 
