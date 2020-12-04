@@ -58,7 +58,6 @@ function getRandomColor() {
 }
 
 function playReady() {
-    cvGame.style.webkitFilter = "blur(0px)";
     ctxGame.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
     ctxIntro.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
     ctxBullet.clearRect(0, 0, CV_WIDTH, CV_HEIGHT);
