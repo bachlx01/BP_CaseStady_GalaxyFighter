@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8cfb8f07-95ba-47d3-8286-e1d53df2a602" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Bài tập/ProjectGame/Case Study M1 fight" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -50,7 +51,13 @@
       <workItem from="1606705720705" duration="17893000" />
       <workItem from="1606784925157" duration="9857000" />
       <workItem from="1606805808264" duration="9091000" />
-      <workItem from="1606871741739" duration="6203000" />
+      <workItem from="1606871741739" duration="7156000" />
+      <workItem from="1606896439288" duration="1542000" />
+      <workItem from="1606902875594" duration="1006000" />
+      <workItem from="1606964475647" duration="22000" />
+      <workItem from="1606964988909" duration="806000" />
+      <workItem from="1606968048926" duration="1355000" />
+      <workItem from="1606988982558" duration="1649000" />
     </task>
     <servers />
   </component>
@@ -58,10 +65,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606786000151">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606965794265">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606786000151" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606965794265" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606711512621">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
