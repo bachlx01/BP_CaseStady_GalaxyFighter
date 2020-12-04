@@ -36,13 +36,13 @@ ctxIntro.fillStyle = 'wheat';
 ctxIntro.fillText("GAME", CV_WIDTH / 2, CV_HEIGHT / 3);
 ctxIntro.font = " bold 80px Impact ";
 ctxIntro.fillStyle = 'yellow';
-ctxIntro.fillText("SAVE THE WORLD", CV_WIDTH / 2, CV_HEIGHT / 2);
+ctxIntro.fillText("GALAXY FIGHTER", CV_WIDTH / 2, CV_HEIGHT / 2);
 ctxIntro.font = " bold 20px Arial ";
 ctxIntro.fillStyle = 'red';
 ctxIntro.fillText("PRESS ENTER TO PLAY", CV_WIDTH / 2, CV_HEIGHT / 1.5);
 ctxIntro.fillStyle = 'wheat';
 ctxIntro.font = " bold 15px Arial ";
-ctxIntro.fillText("PRESS CTRL TO SHOOT", CV_WIDTH / 2, CV_HEIGHT / 1.3);
+ctxIntro.fillText("PRESS SPACE TO SHOOT", CV_WIDTH / 2, CV_HEIGHT / 1.3);
 ctxIntro.fillStyle = 'wheat';
 ctxIntro.fillText("PRESS LEFT/RIGHT ARROW TO CHANGE DIRECTION", CV_WIDTH / 2, CV_HEIGHT / 1.2);
 

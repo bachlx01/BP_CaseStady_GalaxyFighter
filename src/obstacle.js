@@ -1,4 +1,4 @@
-const EASY_SPEED = 0.45;
+const EASY_SPEED = 0.8;
 const NUMBERS_OBSTACLES = 10;
 const OBSTACLES_SIZE = 70;
 const BLUR_LEVEL = 30;

@@ -56,7 +56,7 @@ let Player = function () {
                 case RIGHT_ARROW_KEY:
                     this.orientation = ORIENTATION_RIGHT;
                     break;
-                case CTRL_KEY:
+                case SPACE_KEY:
                     this.shoot();
                     // for (let i = 0; i < obstacles.length; i++) {
                     //     game.obstacles[i].shoot();
